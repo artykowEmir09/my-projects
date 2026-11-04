@@ -1,22 +1,15 @@
 <?php
-
 session_start();
-
 require_once "db.php";
-
 if (!isset($_SESSION["user_id"])) {
 
     header("Location: login.php");
     exit;
-
 }
-
 if ($_SESSION["user_role"] !== "admin") {
 
     die("Access denied.");
-
 }
-
 $stmt = $pdo->query(
     "SELECT id, name, email, role, created_at
      FROM users
@@ -30,12 +23,9 @@ $countStmt = $pdo->query(
 );
 
 $totalUsers = $countStmt->fetchColumn();
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
